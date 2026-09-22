@@ -80,10 +80,11 @@ jobs:
           node-version: 24.14.0
           cache: pnpm
 
-      # rpm 目标要求构建机提供 rpmbuild（仓库 electron-builder.config.js 注释）。
+      # rpm 目标要求构建机提供 rpmbuild；pacman 目标（fpm）用 bsdtar 生成 .MTREE，
+      # 两者分别由 rpm / libarchive-tools 提供（仓库 electron-builder.config.js 注释 + v3.14.0 首跑实测）。
       - name: Install Linux packaging tools
         if: runner.os == 'Linux'
-        run: sudo apt-get update && sudo apt-get install -y rpm
+        run: sudo apt-get update && sudo apt-get install -y rpm libarchive-tools
 
       - name: Cache Electron downloads
         uses: actions/cache@v4
