@@ -11,7 +11,7 @@ import {
   useRef,
   useState,
 } from "react";
-import darkEmptyStateLogoUrl from "@/assets/Z.svg";
+import darkEmptyStateLogoUrl from "@/assets/shiji-logo.png";
 import { cn } from "@/components/lib/utils.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";
 import { useIsOfficeMode } from "@/hooks/useInterfaceMode.js";
@@ -266,10 +266,17 @@ function ZCodeEmptyStateLogo({ className }: { className?: string }) {
           stroke="currentColor"
         />
       </svg>
-      {/* 深色资源包含专用渐变与模糊效果，不能通过 currentColor 复刻；主题类保证两套 Logo 互斥显示。 */}
+      {/* Shiji 水印是白色透明底位图；用与浅色线框一致的底部渐隐遮罩融入背景，主题类保证两套 Logo 互斥显示。 */}
       <img
         aria-hidden="true"
-        className={cn(className, "hidden dark:block")}
+        className={cn(
+          className,
+          "hidden dark:block opacity-70",
+          "[-webkit-mask-image:linear-gradient(to_bottom,black_0%,transparent_70%,transparent_100%)]",
+          "[-webkit-mask-repeat:no-repeat] [-webkit-mask-size:100%_100%]",
+          "[mask-image:linear-gradient(to_bottom,black_0%,transparent_70%,transparent_100%)]",
+          "[mask-repeat:no-repeat] [mask-size:100%_100%]",
+        )}
         data-v4-draft-logo="dark"
         src={darkEmptyStateLogoUrl}
         alt=""

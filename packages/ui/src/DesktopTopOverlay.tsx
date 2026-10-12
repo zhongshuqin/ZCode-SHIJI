@@ -136,13 +136,13 @@ export function DesktopTopOverlay({
               title={toggleSidebarTitle}
               shortcut={toggleSidebarShortcutLabel}
               ariaLabel={toggleSidebarTitle}
-              buttonClassName="group relative overflow-hidden rounded-lg"
+              buttonClassName="group relative w-auto overflow-hidden rounded-lg px-1"
               onClick={onToggleSidebar}
             >
               <img
                 src={appLogoUrl}
                 alt="ZCode"
-                className="size-5 transition-opacity duration-150 group-hover:opacity-0"
+                className="h-5 w-auto invert transition-opacity duration-150 group-hover:opacity-0 dark:invert-0"
                 draggable={false}
               />
               <SidebarToggleIcon className="absolute inset-0 m-auto size-4 opacity-0 transition-opacity duration-150 group-hover:opacity-100" />
