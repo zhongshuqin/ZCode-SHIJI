@@ -5,6 +5,10 @@
 # E2E PDF fixture 含规范 xref 尾空格，必须按二进制处理，避免 diff --check 误报。
 packages/desktop/test/e2e/fixtures/fs/**/*.pdf binary
 
+# Gen UI vendor 快照按字节做 SHA-256 校验（vendor/manifest.json），checkout 时不得转换换行，
+# 否则 Windows（autocrlf）下哈希全部失配，打包在构建阶段直接失败。
+apps/zcode-cli/packages/visualize-plugin/skills/visualize/assets/vendor/** -text -whitespace
+
 # 上游许可原文与生成的声明按字节保存，不能自动转换换行或裁剪空白。
 # 原文中的 License / ======= 是 Markdown 标题，不是合并冲突。
 THIRD-PARTY-NOTICES.md -text -whitespace conflict-marker-size=32 linguist-generated=true
