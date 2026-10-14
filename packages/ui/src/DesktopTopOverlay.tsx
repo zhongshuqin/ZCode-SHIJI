@@ -141,7 +141,7 @@ export function DesktopTopOverlay({
             >
               <img
                 src={appLogoUrl}
-                alt="ZCode"
+                alt="GCode"
                 className="h-5 w-auto invert transition-opacity duration-150 group-hover:opacity-0 dark:invert-0"
                 draggable={false}
               />
